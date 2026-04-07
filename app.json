@@ -1,0 +1,36 @@
+{
+  "expo": {
+    "name": "react-navigation-floating-template",
+    "slug": "react-navigation-floating-template",
+    "version": "1.0.0",
+    "orientation": "default",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "scheme": "reactnavigationfloatingtemplate",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.reactnavigationfloatingtemplate"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.reactnavigationfloatingtemplate"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-asset",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#ffffff",
+          "image": "./assets/splash-icon.png"
+        }
+      ]
+    ]
+  }
+}
