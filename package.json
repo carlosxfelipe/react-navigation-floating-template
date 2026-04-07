@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@expo/metro-runtime": "~55.0.6",
+    "@expo/vector-icons": "^15.1.1",
     "@react-navigation/bottom-tabs": "^7.15.5",
     "@react-navigation/elements": "^2.9.10",
     "@react-navigation/native": "^7.1.33",
@@ -17,6 +18,7 @@
     "expo": "^55.0.7",
     "expo-asset": "~55.0.9",
     "expo-dev-client": "~55.0.17",
+    "expo-linear-gradient": "~55.0.12",
     "expo-linking": "~55.0.7",
     "expo-splash-screen": "~55.0.11",
     "expo-system-ui": "~55.0.10",
@@ -30,7 +32,10 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "@types/color": "^4.2.1",
+    "@types/node": "^25.5.2",
     "@types/react": "~19.2.10",
+    "ts-node": "^10.9.2",
     "typescript": "~5.9.2"
   },
   "private": true
