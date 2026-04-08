@@ -29,6 +29,24 @@ export const getHeaderOptions = (tabName: string) => {
     };
   }
 
+  if (tabName === "Orders") {
+    return {
+      headerShown: true,
+      headerTransparent: true,
+      header: () => (
+        <FloatingAppBar
+          title="Meus Pedidos"
+          showBackButton={false}
+          trailingIcon={{
+            type: "MaterialCommunityIcons",
+            name: "filter-variant",
+          }}
+          onTrailingTapped={() => console.log("filtros")}
+        />
+      ),
+    };
+  }
+
   if (tabName === "About") {
     return {
       headerShown: true,
@@ -41,7 +59,7 @@ export const getHeaderOptions = (tabName: string) => {
             type: "MaterialCommunityIcons",
             name: "help-circle-outline",
           }}
-          onTrailingTapped={() => console.log("teste")}
+          onTrailingTapped={() => console.log("ajuda")}
         />
       ),
     };

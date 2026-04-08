@@ -4,8 +4,10 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import type { Theme as AppTheme } from "../themes";
 import { tabItems } from "./tabItems";
 import { getHeaderOptions } from "./headerOptions";
+import { LiquidGlassTabBar } from "../components/organisms/LiquidGlassTabBar";
 
 export const HomeTabs = createBottomTabNavigator({
+  tabBar: (props) => <LiquidGlassTabBar {...props} />,
   screenOptions: ({ theme }) => {
     const appTheme = theme as AppTheme;
 
@@ -15,8 +17,10 @@ export const HomeTabs = createBottomTabNavigator({
       },
       headerTintColor: appTheme.colors.text,
       tabBarStyle: {
-        backgroundColor: appTheme.colors.tabBar,
-        borderTopColor: appTheme.colors.border,
+        display: "none", // Hide the default tab bar
+      }, // Add padding bottom for floating tab bar
+      sceneContainerStyle: {
+        paddingBottom: 100, // Space for floating tab bar
       },
     };
   },

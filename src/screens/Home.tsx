@@ -1,13 +1,11 @@
 import { Linking, StyleSheet } from "react-native";
-import { useHeaderHeight } from "@react-navigation/elements";
-import { ThemedScrollView } from "../components/atoms/ThemedScrollView";
+import { ScreenScrollView } from "../components/atoms/ScreenScrollView";
 import { ThemedText } from "../components/atoms/ThemedText";
 import { Button } from "../components/molecules/Button";
 import { Icon } from "../components/atoms/Icon";
 import { ComponentsShowcase } from "../components/pages/ComponentsShowcase";
 
 export function Home() {
-  const headerHeight = useHeaderHeight();
   const handleOpenGithub = () => {
     Linking.openURL(
       "https://github.com/carlosxfelipe/react-navigation-template",
@@ -15,14 +13,7 @@ export function Home() {
   };
 
   return (
-    <ThemedScrollView
-      style={styles.container}
-      contentContainerStyle={[
-        styles.contentContainer,
-        { paddingTop: headerHeight + 16 },
-      ]}
-      showsVerticalScrollIndicator={false}
-    >
+    <ScreenScrollView>
       <ThemedText>Tela Inicial</ThemedText>
       <ThemedText>
         Abra o arquivo 'src/App.tsx' para começar a trabalhar no seu app!
@@ -61,19 +52,8 @@ export function Home() {
       >
         Ver no GitHub
       </Button>
-
-      <ComponentsShowcase />
-    </ThemedScrollView>
+    </ScreenScrollView>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  contentContainer: {
-    flexGrow: 1,
-    padding: 20,
-    gap: 10,
-  },
-});
+const styles = StyleSheet.create({});

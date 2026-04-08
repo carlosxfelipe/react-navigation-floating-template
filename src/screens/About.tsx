@@ -1,12 +1,9 @@
-import { StyleSheet } from "react-native";
-import { useHeaderHeight } from "@react-navigation/elements";
-import { ThemedView } from "../components/atoms/ThemedView";
+import { ScreenScrollView } from "../components/atoms/ScreenScrollView";
 import { ThemedText } from "../components/atoms/ThemedText";
 
 export function About() {
-  const headerHeight = useHeaderHeight();
   return (
-    <ThemedView style={[styles.container, { paddingTop: headerHeight + 16 }]}>
+    <ScreenScrollView>
       <ThemedText>
         Este projeto é baseado no template oficial do React Navigation:
       </ThemedText>
@@ -23,14 +20,6 @@ export function About() {
         `ios/` e `android/` são geradas automaticamente (CNG), por isso o ideal
         é usar config plugins em vez de editar essas pastas diretamente.
       </ThemedText>
-    </ThemedView>
+    </ScreenScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-    gap: 10,
-  },
-});
