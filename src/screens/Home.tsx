@@ -3,23 +3,23 @@ import { ScreenScrollView } from "../components/atoms/ScreenScrollView";
 import { ThemedText } from "../components/atoms/ThemedText";
 import { Button } from "../components/molecules/Button";
 import { Icon } from "../components/atoms/Icon";
-import { ComponentsShowcase } from "../components/pages/ComponentsShowcase";
 
 export function Home() {
   const handleOpenGithub = () => {
     Linking.openURL(
-      "https://github.com/carlosxfelipe/react-navigation-template",
+      "https://github.com/carlosxfelipe/react-navigation-floating-template",
     );
   };
 
   return (
-    <ScreenScrollView>
+    <ScreenScrollView contentContainerStyle={styles.content}>
       <ThemedText>Tela Inicial</ThemedText>
       <ThemedText>
         Abra o arquivo 'src/App.tsx' para começar a trabalhar no seu app!
       </ThemedText>
 
       <Button
+        shape="pill"
         screen="Profile"
         params={{ user: "carlos" }}
         iconLeft={(color: string) => (
@@ -30,6 +30,7 @@ export function Home() {
       </Button>
 
       <Button
+        shape="pill"
         screen="Settings"
         iconRight={(color: string) => (
           <Icon type="Ionicons" name="settings-outline" color={color} />
@@ -39,7 +40,7 @@ export function Home() {
       </Button>
 
       <Button
-        variant="filled"
+        shape="pill"
         onPress={handleOpenGithub}
         iconLeft={(color) => (
           <Icon
@@ -56,4 +57,9 @@ export function Home() {
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  content: {
+    padding: 20,
+    gap: 10,
+  },
+});

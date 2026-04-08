@@ -28,8 +28,5 @@ export function ScreenScrollView({
 }
 
 const styles = StyleSheet.create({
-  contentContainer: {
-    padding: 20,
-    gap: 10,
-  },
+  contentContainer: {},
 });

@@ -1,9 +1,13 @@
+import { StyleSheet, View } from "react-native";
 import { ScreenScrollView } from "../components/atoms/ScreenScrollView";
 import { ThemedText } from "../components/atoms/ThemedText";
+import { FloatingOrbs } from "../components/molecules/FloatingOrbs";
 
 export function About() {
   return (
-    <ScreenScrollView>
+    <ScreenScrollView contentContainerStyle={styles.content}>
+      <FloatingOrbs />
+      <View style={{ height: 10 }} />
       <ThemedText>
         Este projeto é baseado no template oficial do React Navigation:
       </ThemedText>
@@ -23,3 +27,10 @@ export function About() {
     </ScreenScrollView>
   );
 }
+
+const styles = StyleSheet.create({
+  content: {
+    padding: 20,
+    gap: 10,
+  },
+});

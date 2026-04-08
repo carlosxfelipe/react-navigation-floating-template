@@ -20,7 +20,7 @@ export const HomeTabs = createBottomTabNavigator({
         display: "none", // Hide the default tab bar
       }, // Add padding bottom for floating tab bar
       sceneContainerStyle: {
-        paddingBottom: 100, // Space for floating tab bar
+        paddingBottom: 80, // Space for floating tab bar
       },
     };
   },

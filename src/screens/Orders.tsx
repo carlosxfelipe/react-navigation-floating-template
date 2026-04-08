@@ -1,84 +1,67 @@
-import { StyleSheet, View, Image } from "react-native";
+import { StyleSheet } from "react-native";
 import { ScreenScrollView } from "../components/atoms/ScreenScrollView";
-import { ThemedText } from "../components/atoms/ThemedText";
-import { PlatformPressable } from "../components/atoms/PlatformPressable";
-import { useTheme } from "@react-navigation/native";
-import type { Theme as AppTheme } from "../themes";
-import mockProducts from "../../resources/mock_products.json";
+import { ProductCard } from "../components/molecules/ProductCard";
 
-type Product = {
-  id: string;
-  name: string;
-  description: string;
-  price: number;
-  unitPrice: number;
-  imageUrl: string;
-};
-
-type ProductCardProps = {
-  product: Product;
-};
-
-function ProductCard({ product }: ProductCardProps) {
-  const { colors } = useTheme() as AppTheme;
-
-  return (
-    <View
-      style={[
-        styles.card,
-        { backgroundColor: colors.card, borderColor: colors.cardBorder },
-      ]}
-    >
-      <Image
-        source={{ uri: product.imageUrl }}
-        style={[styles.cardImage, { backgroundColor: colors.inputBackground }]}
-      />
-      <View style={styles.cardContent}>
-        <ThemedText style={styles.cardName} numberOfLines={2}>
-          {product.name}
-        </ThemedText>
-        <ThemedText style={styles.cardDescription}>
-          {product.description}
-        </ThemedText>
-        <View style={styles.cardFooter}>
-          <View>
-            <ThemedText style={styles.cardPrice}>
-              R$ {product.price.toFixed(2).replace(".", ",")}
-            </ThemedText>
-            <ThemedText style={styles.cardUnitPrice}>
-              R$ {product.unitPrice.toFixed(2).replace(".", ",")} cada
-            </ThemedText>
-          </View>
-          <View style={styles.cardActions}>
-            <PlatformPressable
-              style={[styles.qtyButton, { borderColor: colors.border }]}
-              android_ripple={{ color: colors.primary + "20" }}
-            >
-              <ThemedText style={styles.qtyButtonText}>−</ThemedText>
-            </PlatformPressable>
-            <ThemedText style={styles.qtyValue}>1</ThemedText>
-            <PlatformPressable
-              style={[styles.qtyButton, { borderColor: colors.border }]}
-              android_ripple={{ color: colors.primary + "20" }}
-            >
-              <ThemedText style={styles.qtyButtonText}>+</ThemedText>
-            </PlatformPressable>
-            <PlatformPressable
-              style={[styles.addButton, { backgroundColor: colors.primary }]}
-              android_ripple={{ color: "rgba(255,255,255,0.3)" }}
-            >
-              <ThemedText style={styles.addButtonText}>Adicionar</ThemedText>
-            </PlatformPressable>
-          </View>
-        </View>
-      </View>
-    </View>
-  );
-}
+const mockProducts = [
+  {
+    id: "550e8400-e29b-41d4-a716-446655440000",
+    name: "Coca-Cola 2 Litros",
+    description: "Caixa com 6 unidades",
+    price: 71.34,
+    unitPrice: 11.89,
+    imageUrl:
+      "https://coopsp.vtexassets.com/arquivos/ids/249028-800-800?v=638937339758800000&width=800&height=800&aspect=true",
+  },
+  {
+    id: "550e8400-e29b-41d4-a716-446655440001",
+    name: "Kit Coca-Cola + Fanta Laranja 2 Litros",
+    description: "Contém 2 unidades (1 de cada)",
+    price: 16.99,
+    unitPrice: 8.49,
+    imageUrl:
+      "https://coopsp.vtexassets.com/arquivos/ids/249040-800-800?v=638937346764500000&width=800&height=800&aspect=true",
+  },
+  {
+    id: "550e8400-e29b-41d4-a716-446655440002",
+    name: "Sprite Lata Sem Açúcar 350ml",
+    description: "Pack com 12 unidades",
+    price: 34.68,
+    unitPrice: 2.89,
+    imageUrl:
+      "https://coopsp.vtexassets.com/arquivos/ids/249401-800-800?v=638960679639700000&width=800&height=800&aspect=true",
+  },
+  {
+    id: "550e8400-e29b-41d4-a716-446655440003",
+    name: "Monster Energy 473ml",
+    description: "Caixa com 6 unidades",
+    price: 47.94,
+    unitPrice: 7.99,
+    imageUrl:
+      "https://coopsp.vtexassets.com/arquivos/ids/248951-800-800?v=638931136491370000&width=800&height=800&aspect=true",
+  },
+  {
+    id: "550e8400-e29b-41d4-a716-446655440004",
+    name: "Suco de Uva Kapo Del Valle 200ml",
+    description: "Caixa com 6 unidades",
+    price: 15.54,
+    unitPrice: 2.59,
+    imageUrl:
+      "https://coopsp.vtexassets.com/arquivos/ids/249080-800-800?v=638941443128230000&width=800&height=800&aspect=true",
+  },
+  {
+    id: "550e8400-e29b-41d4-a716-446655440005",
+    name: "Água Mineral com Gás Crystal 500ml",
+    description: "Pack com 12 unidades",
+    price: 28.68,
+    unitPrice: 2.39,
+    imageUrl:
+      "https://coopsp.vtexassets.com/arquivos/ids/249370-800-800?v=638960628217870000&width=800&height=800&aspect=true",
+  },
+];
 
 export function Orders() {
   return (
-    <ScreenScrollView>
+    <ScreenScrollView contentContainerStyle={styles.content}>
       {mockProducts.map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}
@@ -87,77 +70,8 @@ export function Orders() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    gap: 12,
-  },
-  card: {
-    borderRadius: 16,
-    borderWidth: 1,
-    overflow: "hidden",
-  },
-  cardImage: {
-    width: "100%",
-    height: 160,
-    resizeMode: "contain",
-    padding: 16,
-  },
-  cardContent: {
-    padding: 16,
-    gap: 4,
-  },
-  cardName: {
-    fontSize: 16,
-    fontWeight: "700",
-  },
-  cardDescription: {
-    fontSize: 13,
-    opacity: 0.6,
-  },
-  cardFooter: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginTop: 8,
-  },
-  cardPrice: {
-    fontSize: 20,
-    fontWeight: "700",
-  },
-  cardUnitPrice: {
-    fontSize: 12,
-    opacity: 0.5,
-  },
-  cardActions: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 8,
-  },
-  qtyButton: {
-    width: 30,
-    height: 30,
-    borderRadius: 15,
-    borderWidth: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  qtyButtonText: {
-    fontSize: 18,
-    lineHeight: 22,
-  },
-  qtyValue: {
-    fontSize: 16,
-    fontWeight: "600",
-    minWidth: 16,
-    textAlign: "center",
-  },
-  addButton: {
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 20,
-  },
-  addButtonText: {
-    color: "white",
-    fontWeight: "600",
-    fontSize: 14,
+  content: {
+    padding: 20,
+    gap: 10,
   },
 });

@@ -6,7 +6,8 @@
     "start": "expo start --dev-client",
     "web": "expo start --web",
     "android": "expo run:android",
-    "ios": "expo run:ios"
+    "ios": "expo run:ios",
+    "build:apk": "cd android && ./gradlew assembleRelease && cd .. && mkdir -p apk-build && cp android/app/build/outputs/apk/release/app-release.apk apk-build/"
   },
   "dependencies": {
     "@expo/metro-runtime": "~55.0.6",

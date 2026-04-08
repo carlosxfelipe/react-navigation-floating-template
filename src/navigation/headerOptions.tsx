@@ -39,7 +39,7 @@ export const getHeaderOptions = (tabName: string) => {
           showBackButton={false}
           trailingIcon={{
             type: "MaterialCommunityIcons",
-            name: "filter-variant",
+            name: "cart-outline",
           }}
           onTrailingTapped={() => console.log("filtros")}
         />

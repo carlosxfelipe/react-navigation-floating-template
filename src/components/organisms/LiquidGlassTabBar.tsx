@@ -14,6 +14,25 @@ import type { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 import { Icon } from "../atoms/Icon";
 import { tabItems } from "../../navigation/tabItems";
 
+const GRADIENT_DARK = [
+  "rgba(28, 28, 30, 0.96)",
+  "rgba(32, 32, 34, 0.94)",
+  "rgba(28, 28, 30, 0.96)",
+] as const;
+
+const GRADIENT_LIGHT = [
+  "rgba(255, 255, 255, 0.95)",
+  "rgba(255, 255, 255, 0.85)",
+  "rgba(255, 255, 255, 0.95)",
+] as const;
+
+const COLOR_ICON_DARK = "rgba(255, 255, 255, 0.8)";
+const COLOR_ICON_LIGHT = "rgba(0, 0, 0, 0.8)";
+const COLOR_BORDER_DARK = "rgba(255, 255, 255, 0.08)";
+const COLOR_BORDER_LIGHT = "rgba(0, 0, 0, 0.08)";
+const COLOR_ACTIVE_BG_DARK = "rgba(255, 255, 255, 0.08)";
+const COLOR_ACTIVE_BG_LIGHT = "rgba(0, 0, 0, 0.06)";
+
 export function LiquidGlassTabBar({
   state,
   descriptors,
@@ -27,23 +46,14 @@ export function LiquidGlassTabBar({
     <View
       style={[
         styles.container,
-        { paddingBottom: insets.bottom > 0 ? insets.bottom : 12 },
+        {
+          paddingBottom: insets.bottom > 0 ? insets.bottom : 12,
+          bottom: Platform.OS === "android" ? 16 : 0,
+        },
       ]}
     >
       <LinearGradient
-        colors={
-          theme.dark
-            ? [
-                "rgba(28, 28, 30, 0.95)",
-                "rgba(44, 44, 46, 0.9)",
-                "rgba(28, 28, 30, 0.95)",
-              ]
-            : [
-                "rgba(255, 255, 255, 0.95)",
-                "rgba(255, 255, 255, 0.85)",
-                "rgba(255, 255, 255, 0.95)",
-              ]
-        }
+        colors={theme.dark ? GRADIENT_DARK : GRADIENT_LIGHT}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
         style={styles.blurContainer}
@@ -53,9 +63,7 @@ export function LiquidGlassTabBar({
             styles.tabContainer,
             {
               backgroundColor: "transparent",
-              borderColor: theme.dark
-                ? "rgba(255, 255, 255, 0.08)"
-                : "rgba(0, 0, 0, 0.08)",
+              borderColor: theme.dark ? COLOR_BORDER_DARK : COLOR_BORDER_LIGHT,
             },
           ]}
         >
@@ -106,8 +114,8 @@ export function LiquidGlassTabBar({
                   isFocused && styles.activeTabItem,
                   isFocused && {
                     backgroundColor: theme.dark
-                      ? "rgba(255, 255, 255, 0.08)"
-                      : "rgba(0, 0, 0, 0.06)",
+                      ? COLOR_ACTIVE_BG_DARK
+                      : COLOR_ACTIVE_BG_LIGHT,
                   },
                 ]}
                 activeOpacity={0.7}
@@ -120,10 +128,10 @@ export function LiquidGlassTabBar({
                       isFocused
                         ? colors.primary
                         : theme.dark
-                          ? "rgba(255, 255, 255, 0.8)"
-                          : "rgba(0, 0, 0, 0.8)"
+                          ? COLOR_ICON_DARK
+                          : COLOR_ICON_LIGHT
                     }
-                    size={28}
+                    size={22}
                   />
                 )}
                 <Text
@@ -133,8 +141,8 @@ export function LiquidGlassTabBar({
                       color: isFocused
                         ? colors.primary
                         : theme.dark
-                          ? "rgba(255, 255, 255, 0.8)"
-                          : "rgba(0, 0, 0, 0.8)",
+                          ? COLOR_ICON_DARK
+                          : COLOR_ICON_LIGHT,
                     },
                   ]}
                 >
@@ -175,7 +183,7 @@ const styles = StyleSheet.create({
   },
   tabContainer: {
     flexDirection: "row",
-    height: 80,
+    height: 60,
     borderRadius: 40,
     borderWidth: 0.5,
     alignItems: "center",
@@ -186,11 +194,11 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    paddingVertical: 10,
+    paddingVertical: 6,
     borderRadius: 32,
     marginHorizontal: 2,
     gap: 2,
-    minHeight: 64,
+    minHeight: 48,
   },
   activeTabItem: {
     transform: [{ scale: 1.0 }],

@@ -84,7 +84,11 @@ export function FloatingAppBar({
         ]}
       >
         <Text
-          style={[styles.titleText, { color: colors.text }, fonts.bold]}
+          style={[
+            styles.titleText,
+            { color: colors.text },
+            Platform.OS === "android" ? fonts.heavy : fonts.bold,
+          ]}
           numberOfLines={1}
         >
           {title}
