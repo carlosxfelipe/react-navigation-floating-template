@@ -3,7 +3,11 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useTheme } from "@react-navigation/native";
 import type { Theme as AppTheme } from "../../themes";
 
-const OPACITIES = [1, 0.97, 0.92, 0.85, 0.75, 0.62, 0.48, 0.33, 0.18, 0.07, 0];
+const STEPS = 32;
+const opacities = Array.from({ length: STEPS }, (_, i) => {
+  const t = i / (STEPS - 1);
+  return Math.pow(1 - t, 1.8);
+});
 
 export function StatusBarGradient() {
   const { colors } = useTheme() as AppTheme;
@@ -11,7 +15,7 @@ export function StatusBarGradient() {
 
   return (
     <View style={[styles.container, { height: insets.top + 48 }]}>
-      {OPACITIES.map((opacity, i) => (
+      {opacities.map((opacity, i) => (
         <View
           key={i}
           style={[
