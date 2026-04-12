@@ -29,17 +29,17 @@ export const getHeaderOptions = (tabName: string) => {
     };
   }
 
-  if (tabName === "Orders") {
+  if (tabName === "Explore") {
     return {
       headerShown: true,
       headerTransparent: true,
       header: () => (
         <FloatingAppBar
-          title="Meus Pedidos"
+          title="Explorar"
           showBackButton={false}
           trailingIcon={{
             type: "MaterialCommunityIcons",
-            name: "cart-outline",
+            name: "tune-variant",
           }}
           onTrailingTapped={() => console.log("filtros")}
         />

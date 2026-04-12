@@ -144,6 +144,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   titleText: {
-    fontSize: 15,
+    fontSize: Platform.OS === "android" ? 20 : 17,
   },
 });
